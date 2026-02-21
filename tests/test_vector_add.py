@@ -3,6 +3,7 @@ import torch
 from loguru import logger
 import pytest
 
+
 @pytest.mark.parametrize("n_elements", [1024, 2048, 4096])
 def test_vector_add(n_elements):
     logger.info(f"Testing vector_add with {n_elements} elements")

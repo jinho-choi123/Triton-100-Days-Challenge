@@ -10,6 +10,9 @@ dependencies = [
     "pytest==9.0.2",
     "numpy<2.0.0",
     "loguru>=0.7.3",
+    "pre-commit>=4.5.1",
+    "ruff>=0.15.2",
+    "ty>=0.0.18",
 ]
 
 [build-system]
@@ -55,12 +58,6 @@ exclude = [
 line-length = 88
 indent-width = 4
 
-# Allow fix for all enabled rules (when `--fix`) is provided.
-fixable = ["ALL"]
-unfixable = []
-
-# Allow unused variables when underscore-prefixed.
-dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 
 [tool.ruff.format]
 # Like Black, use double quotes for strings.
@@ -75,6 +72,17 @@ skip-magic-trailing-comma = false
 # Like Black, automatically detect the appropriate line ending.
 line-ending = "auto"
 
+[tool.ruff.lint]
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+ignore = ["E731"]
+
 [tool.pytest]
 addopts = ["--verbose", "-s"]
 testpaths = ["tests"]
+
+[tool.ty.src]
+include = ["triton_kernels"]
