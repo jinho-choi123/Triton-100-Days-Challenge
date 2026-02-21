@@ -1,4 +1,4 @@
-# CUDA 100 Days Challenge
+# Triton 100 Days Challenge
 
 This is a 100-day challenge to learn CUDA programming in Triton.
 
@@ -10,4 +10,10 @@ uv sync
 
 # Activate the virtual environment
 source .venv/bin/activate
+```
+
+## Running Tests
+
+```bash
+uv run pytest
 ```
