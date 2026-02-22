@@ -33,7 +33,7 @@ repos:
   hooks:
     - id: pytest
       name: pytest
-      entry: pytest
+      entry: pytest -k tests
       language: system
       types: [python]
       require_serial: true

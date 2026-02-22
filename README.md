@@ -4,6 +4,8 @@ This is a 100-day challenge to learn CUDA programming in Triton.
 
 ## Setup
 
+This repo assumes the CUDA version 12.6 or higher is installed and configured.
+
 ```bash
 # Create a virtual environment
 uv sync
@@ -13,7 +15,7 @@ source .venv/bin/activate
 ```
 
 ## Running Tests
-
+If you run the following test, it will also create a folder named `bench_results` in the root directory and store the benchmark results in it.
 ```bash
 uv run pytest
 ```

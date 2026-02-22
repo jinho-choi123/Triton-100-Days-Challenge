@@ -1,6 +1,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/python,cuda,jupyternotebooks,linux,macos,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,cuda,jupyternotebooks,linux,macos,visualstudiocode
 
+bench_results/
+
 ### CUDA ###
 *.i
 *.ii

@@ -13,6 +13,8 @@ dependencies = [
     "pre-commit>=4.5.1",
     "ruff>=0.15.2",
     "ty>=0.0.18",
+    "matplotlib>=3.10.8",
+    "pandas>=2.3.3",
 ]
 
 [build-system]
@@ -82,7 +84,10 @@ ignore = ["E731"]
 
 [tool.pytest]
 addopts = ["--verbose", "-s"]
-testpaths = ["tests"]
+testpaths = ["tests", "benchmark"]
+python_files = ["test_*", "bench_*"]
+python_functions = ["test_*", "bench_*"]
+
 
 [tool.ty.src]
 include = ["triton_kernels"]
