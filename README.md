@@ -19,3 +19,13 @@ If you run the following test, it will also create a folder named `bench_results
 ```bash
 uv run pytest
 ```
+
+If you want to run the benchmark only, you can run the following command:
+```bash
+uv run pytest benchmark/
+```
+
+If you want to run the tests only, you can run the following command:
+```bash
+uv run pytest tests/
+```
