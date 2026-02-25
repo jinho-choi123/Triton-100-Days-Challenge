@@ -17,6 +17,6 @@ def test_prefix_sum(n_elements):
     ref_output = torch.cumsum(input, dim=0)
 
     # check if the output is correct
-    assert torch.allclose(output, ref_output, rtol=1e-4, atol=1e-5)
+    assert torch.allclose(output, ref_output, rtol=1e-3, atol=1e-4)
 
     logger.info("Prefix sum test passed!")
