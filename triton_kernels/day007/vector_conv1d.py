@@ -19,7 +19,7 @@ DEVICE = triton.runtime.driver.active.get_active_torch_device()
     key=["N", "K"],
 )
 @triton.jit
-def conv1d_kernel(
+def vector_conv1d_kernel(
     input_ptr,  # pointer to input tensor
     kernel_ptr,  # pointer to kernel tensor
     output_ptr,  # pointer to output tensor
@@ -50,7 +50,7 @@ def conv1d_kernel(
     tl.store(output_ptr + output_offsets, acc, mask=output_masks)
 
 
-def conv1d(input: torch.Tensor, kernel: torch.Tensor):
+def vector_conv1d(input: torch.Tensor, kernel: torch.Tensor):
     # validate devices
     assert input.device == DEVICE
     assert kernel.device == DEVICE
@@ -78,6 +78,6 @@ def conv1d(input: torch.Tensor, kernel: torch.Tensor):
     grid = lambda meta: (triton.cdiv(N - K + 1, meta["BLOCK_SIZE"]),)
 
     # Call the kernel
-    conv1d_kernel[grid](input, kernel, output, N, K)
+    vector_conv1d_kernel[grid](input, kernel, output, N, K)
 
     return output

@@ -2,6 +2,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,cuda,jupyternotebooks,linux,macos,visualstudiocode
 
 bench_results/
+.vscode/
 
 ### CUDA ###
 *.i

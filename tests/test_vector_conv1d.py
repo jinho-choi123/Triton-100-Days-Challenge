@@ -1,4 +1,4 @@
-import triton_kernels.day007.conv1d as conv1d
+import triton_kernels.day007.vector_conv1d as vector_conv1d
 
 import torch
 from loguru import logger
@@ -18,24 +18,20 @@ import pytest
         (1025, 31),
     ],
 )
-def test_conv1d(N, K):
-    logger.info("Testing conv1d with N={} and K={}", N, K)
+def test_vector_conv1d(N, K):
+    logger.info("Testing vector_conv1d with N={} and K={}", N, K)
 
     # create random tensors
     input = torch.randn(N, device="cuda")
     kernel = torch.randn(K, device="cuda")
-    logger.debug("Input: {}", input)
-    logger.debug("Kernel: {}", kernel)
 
-    # compute conv1d
-    output = conv1d.conv1d(input, kernel)
-    logger.debug("Output: {}", output)
+    # compute vector_conv1d
+    output = vector_conv1d.vector_conv1d(input, kernel)
 
     # compute expected output
     expected_output = torch.nn.functional.conv1d(
         input.unsqueeze(0).unsqueeze(0), kernel.unsqueeze(0).unsqueeze(0)
     ).squeeze()
-    logger.debug("Expected Output: {}", expected_output)
 
     # check if output is correct
     assert torch.allclose(output, expected_output), "Output is not correct"

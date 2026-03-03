@@ -1,6 +1,6 @@
 import torch
 import triton
-import triton_kernels.day007.conv1d as conv1d
+import triton_kernels.day007.vector_conv1d as vector_conv1d
 
 
 @triton.testing.perf_report(
@@ -17,7 +17,7 @@ import triton_kernels.day007.conv1d as conv1d
         args={},
     )
 )
-def run_conv1d_benchmark(N, K, provider):
+def run_vector_conv1d_benchmark(N, K, provider):
     # create random tensors
     input = torch.randn(N, device="cuda")
     kernel = torch.randn(K, device="cuda")
@@ -34,14 +34,14 @@ def run_conv1d_benchmark(N, K, provider):
         )
     else:
         ms, min_ms, max_ms = triton.testing.do_bench(
-            lambda: conv1d.conv1d(input, kernel), quantiles=quantiles
+            lambda: vector_conv1d.vector_conv1d(input, kernel), quantiles=quantiles
         )
 
     return ms, min_ms, max_ms
 
 
-def bench_conv1d(bench_result_dir):
-    conv1d_bench_result_dir = bench_result_dir / "conv1d"
-    conv1d_bench_result_dir.mkdir(exist_ok=True)
+def bench_vector_conv1d(bench_result_dir):
+    vector_conv1d_bench_result_dir = bench_result_dir / "vector_conv1d"
+    vector_conv1d_bench_result_dir.mkdir(exist_ok=True)
 
-    run_conv1d_benchmark.run(save_path=conv1d_bench_result_dir, print_data=True)
+    run_vector_conv1d_benchmark.run(save_path=vector_conv1d_bench_result_dir, print_data=True)
