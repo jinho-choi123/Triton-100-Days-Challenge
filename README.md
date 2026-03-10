@@ -12,6 +12,9 @@ uv sync
 
 # Activate the virtual environment
 source .venv/bin/activate
+
+# Install pre-commit hooks
+pre-commit install
 ```
 
 ## Running Tests
