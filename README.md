@@ -42,5 +42,6 @@ uv run pytest tests/
 | day006 | matrix transpose | Kernel for transposing a matrix | [Kernel Code](triton_kernels/day006/matrix_transpose.py) | [Test Code](tests/test_matrix_transpose.py) | [Benchmark Code](benchmark/bench_matrix_transpose.py) |
 | day007 | vector 1d convolution | Kernel for performing 1D convolution on a vector | [Kernel Code](triton_kernels/day007/vector_conv1d.py) | [Test Code](tests/test_vector_conv1d.py) | [Benchmark Code](benchmark/bench_vector_conv1d.py) |
 | day008 | matrix 2d convolution | Kernel for performing 2D convolution on a matrix | [Kernel Code](triton_kernels/day008/matrix_conv2d.py) | [Test Code](tests/test_matrix_conv2d.py) | [Benchmark Code](benchmark/bench_matrix_conv2d.py) |
-| day009 | softmax | Kernel for performing softmax on a matrix | [Kernel Code](triton_kernels/day009/softmax.py) | [Test Code](tests/test_softmax.py) | [Benchmark Code](benchmark/bench_softmax.py) |
+| day009 | safe softmax | Kernel for performing safe softmax on a matrix | [Kernel Code](triton_kernels/day009/safe_softmax.py) | [Test Code](tests/test_safe_softmax.py) | [Benchmark Code](benchmark/bench_safe_softmax.py) |
 | day010 | relu | Kernel for performing relu on an vector | [Kernel Code](triton_kernels/day010/relu.py) | [Test Code](tests/test_relu.py) | [Benchmark Code](benchmark/bench_relu.py) |
+| day011 | online softmax | Kernel for performing online softmax on a matrix | [Kernel Code](triton_kernels/day011/online_softmax.py) | [Test Code](tests/test_online_softmax.py) | [Benchmark Code](benchmark/bench_online_softmax.py) |

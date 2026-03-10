@@ -17,7 +17,7 @@ DEVICE = triton.runtime.driver.active.get_active_torch_device()
     key=["M, N"],
 )
 @triton.jit
-def softmax_kernel(
+def safe_softmax_kernel(
     input_ptr,  # pointer to the input matrix
     output_ptr,  # pointer to the output matrix
     M,  # number of rows in the input matrix
@@ -92,7 +92,7 @@ def softmax_kernel(
         tl.store(output_ptr + offsets, softmax_block, mask=masks)
 
 
-def softmax(input: torch.Tensor) -> torch.Tensor:
+def safe_softmax(input: torch.Tensor) -> torch.Tensor:
     # validate devices
     assert input.device == DEVICE, (
         f"Input tensor must be on the same device as the kernel. Expected {DEVICE}, but got {input.device}."
@@ -111,6 +111,6 @@ def softmax(input: torch.Tensor) -> torch.Tensor:
     grid = lambda meta: (M,)
 
     # launch the kernel
-    softmax_kernel[grid](input, output, M, N)
+    safe_softmax_kernel[grid](input, output, M, N)
 
     return output
